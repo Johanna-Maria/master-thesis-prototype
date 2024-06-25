@@ -1,0 +1,133 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 1 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in D:\FH\Master\Masterarbeit\The Real Shit\schmidiDB\SchmidiDB\SchmidiDB\bin\Release\net8.0\58359e68-e0a3-4793-b757-180ec39e5229
+// command took 0.95 sec and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in D:\FH\Master\Masterarbeit\The Real Shit\schmidiDB\SchmidiDB\SchmidiDB\bin\Release\net8.0\58359e68-e0a3-4793-b757-180ec39e5229
+// command took 2.26 sec and exited with 0
+// ***** Done, took 00:00:03 (3.27 sec)   *****
+// Found 1 benchmarks:
+//   JoinOrderTests.MostEfficientJoinOrder: .NET 8.0(Runtime=.NET 8.0)
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Höchstleistung)
+// **************************
+// Benchmark: JoinOrderTests.MostEfficientJoinOrder: .NET 8.0(Runtime=.NET 8.0)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 58359e68-e0a3-4793-b757-180ec39e5229.dll --anonymousPipes 1988 1984 --benchmarkName SchmidiDB.Tests.JoinOrderTests.MostEfficientJoinOrder --job ".NET 8.0" --benchmarkId 0 in D:\FH\Master\Masterarbeit\The Real Shit\schmidiDB\SchmidiDB\SchmidiDB\bin\Release\net8.0\58359e68-e0a3-4793-b757-180ec39e5229\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.12
+// Runtime=.NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: .NET 8.0
+
+OverheadJitting  1: 1 op, 149500.00 ns, 149.5000 us/op
+WorkloadJitting  1: 1 op, 1078293400.00 ns, 1.0783 s/op
+
+OverheadJitting  2: 1 op, 800.00 ns, 800.0000 ns/op
+WorkloadJitting  2: 1 op, 926679600.00 ns, 926.6796 ms/op
+
+WorkloadWarmup   1: 1 op, 910253400.00 ns, 910.2534 ms/op
+WorkloadWarmup   2: 1 op, 922360400.00 ns, 922.3604 ms/op
+WorkloadWarmup   3: 1 op, 911795300.00 ns, 911.7953 ms/op
+WorkloadWarmup   4: 1 op, 920582300.00 ns, 920.5823 ms/op
+WorkloadWarmup   5: 1 op, 911819000.00 ns, 911.8190 ms/op
+WorkloadWarmup   6: 1 op, 934676900.00 ns, 934.6769 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 905283900.00 ns, 905.2839 ms/op
+WorkloadActual   2: 1 op, 908014300.00 ns, 908.0143 ms/op
+WorkloadActual   3: 1 op, 908139800.00 ns, 908.1398 ms/op
+WorkloadActual   4: 1 op, 910627000.00 ns, 910.6270 ms/op
+WorkloadActual   5: 1 op, 912857700.00 ns, 912.8577 ms/op
+WorkloadActual   6: 1 op, 921255500.00 ns, 921.2555 ms/op
+WorkloadActual   7: 1 op, 912989200.00 ns, 912.9892 ms/op
+WorkloadActual   8: 1 op, 922673500.00 ns, 922.6735 ms/op
+WorkloadActual   9: 1 op, 915399500.00 ns, 915.3995 ms/op
+WorkloadActual  10: 1 op, 914486600.00 ns, 914.4866 ms/op
+WorkloadActual  11: 1 op, 929576900.00 ns, 929.5769 ms/op
+WorkloadActual  12: 1 op, 914109400.00 ns, 914.1094 ms/op
+WorkloadActual  13: 1 op, 923143300.00 ns, 923.1433 ms/op
+WorkloadActual  14: 1 op, 916594400.00 ns, 916.5944 ms/op
+WorkloadActual  15: 1 op, 908874800.00 ns, 908.8748 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 905283900.00 ns, 905.2839 ms/op
+WorkloadResult   2: 1 op, 908014300.00 ns, 908.0143 ms/op
+WorkloadResult   3: 1 op, 908139800.00 ns, 908.1398 ms/op
+WorkloadResult   4: 1 op, 910627000.00 ns, 910.6270 ms/op
+WorkloadResult   5: 1 op, 912857700.00 ns, 912.8577 ms/op
+WorkloadResult   6: 1 op, 921255500.00 ns, 921.2555 ms/op
+WorkloadResult   7: 1 op, 912989200.00 ns, 912.9892 ms/op
+WorkloadResult   8: 1 op, 922673500.00 ns, 922.6735 ms/op
+WorkloadResult   9: 1 op, 915399500.00 ns, 915.3995 ms/op
+WorkloadResult  10: 1 op, 914486600.00 ns, 914.4866 ms/op
+WorkloadResult  11: 1 op, 929576900.00 ns, 929.5769 ms/op
+WorkloadResult  12: 1 op, 914109400.00 ns, 914.1094 ms/op
+WorkloadResult  13: 1 op, 923143300.00 ns, 923.1433 ms/op
+WorkloadResult  14: 1 op, 916594400.00 ns, 916.5944 ms/op
+WorkloadResult  15: 1 op, 908874800.00 ns, 908.8748 ms/op
+
+// AfterAll
+// Benchmark Process 34768 has exited with code 0.
+
+Mean = 914.935 ms, StdErr = 1.740 ms (0.19%), N = 15, StdDev = 6.740 ms
+Min = 905.284 ms, Q1 = 909.751 ms, Median = 914.109 ms, Q3 = 918.925 ms, Max = 929.577 ms
+IQR = 9.174 ms, LowerFence = 895.990 ms, UpperFence = 932.686 ms
+ConfidenceInterval = [907.729 ms; 922.141 ms] (CI 99.9%), Margin = 7.206 ms (0.79% of Mean)
+Skewness = 0.55, Kurtosis = 2.28, MValue = 2
+
+// ** Remained 0 (0,0 %) benchmark(s) to run. Estimated finish 2024-06-18 17:50 (0h 0m from now) **
+Successfully reverted power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Höchstleistung)
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts\results\SchmidiDB.Tests.JoinOrderTests-report.csv
+  BenchmarkDotNet.Artifacts\results\SchmidiDB.Tests.JoinOrderTests-report-github.md
+  BenchmarkDotNet.Artifacts\results\SchmidiDB.Tests.JoinOrderTests-report.html
+  BenchmarkDotNet.Artifacts\results\SchmidiDB.Tests.JoinOrderTests-measurements.csv
+RPlotExporter couldn't find Rscript.exe in your PATH and no R_HOME environment variable is defined
+  BenchmarkDotNet.Artifacts\results\BuildPlots.R
+
+// * Detailed results *
+JoinOrderTests.MostEfficientJoinOrder: .NET 8.0(Runtime=.NET 8.0)
+Runtime = .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 914.935 ms, StdErr = 1.740 ms (0.19%), N = 15, StdDev = 6.740 ms
+Min = 905.284 ms, Q1 = 909.751 ms, Median = 914.109 ms, Q3 = 918.925 ms, Max = 929.577 ms
+IQR = 9.174 ms, LowerFence = 895.990 ms, UpperFence = 932.686 ms
+ConfidenceInterval = [907.729 ms; 922.141 ms] (CI 99.9%), Margin = 7.206 ms (0.79% of Mean)
+Skewness = 0.55, Kurtosis = 2.28, MValue = 2
+-------------------- Histogram --------------------
+[901.697 ms ; 933.164 ms) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3737/23H2/2023Update/SunValley3)
+Intel Core i7-10700K CPU 3.80GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]   : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+
+Job=.NET 8.0  Runtime=.NET 8.0  
+
+| Method                 | Mean     | Error   | StdDev  |
+|----------------------- |---------:|--------:|--------:|
+| MostEfficientJoinOrder | 914.9 ms | 7.21 ms | 6.74 ms |
+
+// * Legends *
+  Mean   : Arithmetic mean of all measurements
+  Error  : Half of 99.9% confidence interval
+  StdDev : Standard deviation of all measurements
+  1 ms   : 1 Millisecond (0.001 sec)
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:27 (27.89 sec), executed benchmarks: 1
+
+Global total time: 00:00:31 (31.32 sec), executed benchmarks: 1
+// * Artifacts cleanup *
+Artifacts cleanup is finished

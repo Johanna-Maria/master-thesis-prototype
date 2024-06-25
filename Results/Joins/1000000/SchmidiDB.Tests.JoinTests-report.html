@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>SchmidiDB.Tests.JoinTests-20240608-124039</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3593/23H2/2023Update/SunValley3)
+Intel Core i7-10700K CPU 3.80GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]   : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method             </th><th>JoinOperator  </th><th>Mean          </th><th>Error       </th><th>StdDev      </th>
+</tr>
+</thead><tbody><tr><td>AuthorsJoinBooks</td><td>Hash Join</td><td>5,311,574,085.714 ns</td><td>40,159,768.3459 ns</td><td>35,600,588.5987 ns</td>
+</tr><tr><td>BooksJoinAuthors</td><td>Hash Join</td><td>5,153,768,640.000 ns</td><td>25,985,047.6472 ns</td><td>24,306,429.6915 ns</td>
+</tr><tr><td>AuthorsJoinBooksOrdered</td><td>Hash Join</td><td>5,000,839,992.857 ns</td><td>30,320,764.2668 ns</td><td>26,878,567.7588 ns</td>
+</tr><tr><td>BooksJoinAuthorsOrdered</td><td>Hash Join</td><td>5,082,086,060.000 ns</td><td>22,770,377.8630 ns</td><td>21,299,425.5808 ns</td>
+</tr><tr><td>AuthorsJoinBooksUnordered</td><td>Hash Join</td><td>5,231,530,300.000 ns</td><td>48,030,666.6569 ns</td><td>44,927,915.3912 ns</td>
+</tr><tr><td>BooksJoinAuthorsUnordered</td><td>Hash Join</td><td>5,217,985,876.923 ns</td><td>14,871,519.3927 ns</td><td>12,418,392.2274 ns</td>
+</tr><tr><td>AuthorsJoinBooks</td><td>Neste(...)ndex) [24]</td><td>4,808,891,407.143 ns</td><td>19,422,289.7398 ns</td><td>17,217,353.9627 ns</td>
+</tr><tr><td>BooksJoinAuthors</td><td>Neste(...)ndex) [24]</td><td>4,891,159,557.143 ns</td><td>22,574,987.9280 ns</td><td>20,012,138.7884 ns</td>
+</tr><tr><td>AuthorsJoinBooksOrdered</td><td>Neste(...)ndex) [24]</td><td>1.286 ns</td><td>0.0081 ns</td><td>0.0072 ns</td>
+</tr><tr><td>BooksJoinAuthorsOrdered</td><td>Neste(...)ndex) [24]</td><td>4,670,181,000.000 ns</td><td>18,707,341.1275 ns</td><td>16,583,570.6402 ns</td>
+</tr><tr><td>AuthorsJoinBooksUnordered</td><td>Neste(...)ndex) [24]</td><td>4,903,936,753.333 ns</td><td>24,105,488.9295 ns</td><td>22,548,289.3007 ns</td>
+</tr><tr><td>BooksJoinAuthorsUnordered</td><td>Neste(...)ndex) [24]</td><td>1.338 ns</td><td>0.0065 ns</td><td>0.0057 ns</td>
+</tr><tr><td>AuthorsJoinBooks</td><td>Sort-Merge Join</td><td>5,542,651,907.143 ns</td><td>20,593,967.4323 ns</td><td>18,256,015.7184 ns</td>
+</tr><tr><td>BooksJoinAuthors</td><td>Sort-Merge Join</td><td>5,582,455,042.857 ns</td><td>21,310,918.7771 ns</td><td>18,891,574.4113 ns</td>
+</tr><tr><td>AuthorsJoinBooksOrdered</td><td>Sort-Merge Join</td><td>4,770,540,226.667 ns</td><td>20,513,260.7998 ns</td><td>19,188,116.8795 ns</td>
+</tr><tr><td>BooksJoinAuthorsOrdered</td><td>Sort-Merge Join</td><td>4,754,536,526.667 ns</td><td>21,823,666.3695 ns</td><td>20,413,871.0624 ns</td>
+</tr><tr><td>AuthorsJoinBooksUnordered</td><td>Sort-Merge Join</td><td>5,959,464,860.000 ns</td><td>31,259,357.7529 ns</td><td>29,240,022.6367 ns</td>
+</tr><tr><td>BooksJoinAuthorsUnordered</td><td>Sort-Merge Join</td><td>5,975,271,940.000 ns</td><td>39,826,552.4439 ns</td><td>37,253,781.8661 ns</td>
+</tr></tbody></table>
+</body>
+</html>

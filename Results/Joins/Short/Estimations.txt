@@ -1,0 +1,16 @@
+AuthorsJoinNationalities: Nested-Loop Join Estimated: 112000
+NationalitiesJoinAuthors: Nested-Loop Join Estimated: 98001,4
+ContinentsJoinNationalities: Nested-Loop Join Estimated: 11,200000000000001
+NationalitiesJoinContinents: Nested-Loop Join Estimated: 11,200000000000001
+AuthorsJoinNationalities: Nested-Loop Join (Index) Estimated: 154000
+NationalitiesJoinAuthors: Nested-Loop Join (Index) Estimated: 140001,4
+ContinentsJoinNationalities: Nested-Loop Join (Index) Estimated: 15,4
+NationalitiesJoinContinents: Nested-Loop Join (Index) Estimated: 15,4
+AuthorsJoinNationalities: Sort-Merge Join Estimated: 154001,4
+NationalitiesJoinAuthors: Sort-Merge Join Estimated: 154001,4
+ContinentsJoinNationalities: Sort-Merge Join Estimated: 16,8
+NationalitiesJoinContinents: Sort-Merge Join Estimated: 16,8
+AuthorsJoinNationalities: Hash Join Estimated: 154001,4
+NationalitiesJoinAuthors: Hash Join Estimated: 84008,4
+ContinentsJoinNationalities: Hash Join Estimated: 16,8
+NationalitiesJoinContinents: Hash Join Estimated: 16,8

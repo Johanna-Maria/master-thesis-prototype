@@ -1,0 +1,236 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 2 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in D:\FH\Master\Masterarbeit\The Real Shit\schmidiDB\SchmidiDB\SchmidiDB\bin\Release\net8.0\59b21dc1-f955-4ade-835e-828cf77ff031
+// command took 0.94 sec and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in D:\FH\Master\Masterarbeit\The Real Shit\schmidiDB\SchmidiDB\SchmidiDB\bin\Release\net8.0\59b21dc1-f955-4ade-835e-828cf77ff031
+// command took 2.29 sec and exited with 0
+// ***** Done, took 00:00:03 (3.31 sec)   *****
+// Found 2 benchmarks:
+//   JoinOrderTests.ExecuteJoinTree: .NET 8.0(Runtime=.NET 8.0) [JoinTreeMeasure=b, a, n, c, co]
+//   JoinOrderTests.ExecuteJoinTree: .NET 8.0(Runtime=.NET 8.0) [JoinTreeMeasure=n, a, b, c, co]
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Höchstleistung)
+// **************************
+// Benchmark: JoinOrderTests.ExecuteJoinTree: .NET 8.0(Runtime=.NET 8.0) [JoinTreeMeasure=b, a, n, c, co]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 59b21dc1-f955-4ade-835e-828cf77ff031.dll --anonymousPipes 1684 1620 --benchmarkName "SchmidiDB.Tests.JoinOrderTests.ExecuteJoinTree(JoinTreeMeasure: b, a, n, c, co)" --job ".NET 8.0" --benchmarkId 0 in D:\FH\Master\Masterarbeit\The Real Shit\schmidiDB\SchmidiDB\SchmidiDB\bin\Release\net8.0\59b21dc1-f955-4ade-835e-828cf77ff031\bin\Release\net8.0
+// BeforeAnythingElse
+----------------------------Query Plan----------------------------
+Preselection:
+    nationalities n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] authors a ON (n.id = a.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] books b ON (a.id = b.author)  OUTER JOIN [SchmidiDB.Query.Join.SortMergeJoinOperator ] categories c ON (b.category = c.id)  OUTER JOIN [SchmidiDB.Query.Join.SortMergeJoinOperator ] continents co ON (n.continent = co.id)
+Estimated Number of Rows: 100000
+------------------------------------------------------------------
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.12
+// Runtime=.NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: .NET 8.0
+
+OverheadJitting  1: 1 op, 160300.00 ns, 160.3000 us/op
+WorkloadJitting  1: 1 op, 2115239100.00 ns, 2.1152 s/op
+
+OverheadJitting  2: 1 op, 900.00 ns, 900.0000 ns/op
+WorkloadJitting  2: 1 op, 1972754200.00 ns, 1.9728 s/op
+
+WorkloadWarmup   1: 1 op, 1924790900.00 ns, 1.9248 s/op
+WorkloadWarmup   2: 1 op, 1948771300.00 ns, 1.9488 s/op
+WorkloadWarmup   3: 1 op, 1930563900.00 ns, 1.9306 s/op
+WorkloadWarmup   4: 1 op, 1931728700.00 ns, 1.9317 s/op
+WorkloadWarmup   5: 1 op, 2025950700.00 ns, 2.0260 s/op
+WorkloadWarmup   6: 1 op, 1965021700.00 ns, 1.9650 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 1970343000.00 ns, 1.9703 s/op
+WorkloadActual   2: 1 op, 1966473900.00 ns, 1.9665 s/op
+WorkloadActual   3: 1 op, 1922788500.00 ns, 1.9228 s/op
+WorkloadActual   4: 1 op, 1955212800.00 ns, 1.9552 s/op
+WorkloadActual   5: 1 op, 1926616600.00 ns, 1.9266 s/op
+WorkloadActual   6: 1 op, 1934972300.00 ns, 1.9350 s/op
+WorkloadActual   7: 1 op, 1941307200.00 ns, 1.9413 s/op
+WorkloadActual   8: 1 op, 2050687900.00 ns, 2.0507 s/op
+WorkloadActual   9: 1 op, 2132960500.00 ns, 2.1330 s/op
+WorkloadActual  10: 1 op, 1991339000.00 ns, 1.9913 s/op
+WorkloadActual  11: 1 op, 1985805000.00 ns, 1.9858 s/op
+WorkloadActual  12: 1 op, 2000716300.00 ns, 2.0007 s/op
+WorkloadActual  13: 1 op, 1939190500.00 ns, 1.9392 s/op
+WorkloadActual  14: 1 op, 1941177700.00 ns, 1.9412 s/op
+WorkloadActual  15: 1 op, 1970112500.00 ns, 1.9701 s/op
+WorkloadActual  16: 1 op, 1988931100.00 ns, 1.9889 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 1970343000.00 ns, 1.9703 s/op
+WorkloadResult   2: 1 op, 1966473900.00 ns, 1.9665 s/op
+WorkloadResult   3: 1 op, 1922788500.00 ns, 1.9228 s/op
+WorkloadResult   4: 1 op, 1955212800.00 ns, 1.9552 s/op
+WorkloadResult   5: 1 op, 1926616600.00 ns, 1.9266 s/op
+WorkloadResult   6: 1 op, 1934972300.00 ns, 1.9350 s/op
+WorkloadResult   7: 1 op, 1941307200.00 ns, 1.9413 s/op
+WorkloadResult   8: 1 op, 2050687900.00 ns, 2.0507 s/op
+WorkloadResult   9: 1 op, 1991339000.00 ns, 1.9913 s/op
+WorkloadResult  10: 1 op, 1985805000.00 ns, 1.9858 s/op
+WorkloadResult  11: 1 op, 2000716300.00 ns, 2.0007 s/op
+WorkloadResult  12: 1 op, 1939190500.00 ns, 1.9392 s/op
+WorkloadResult  13: 1 op, 1941177700.00 ns, 1.9412 s/op
+WorkloadResult  14: 1 op, 1970112500.00 ns, 1.9701 s/op
+WorkloadResult  15: 1 op, 1988931100.00 ns, 1.9889 s/op
+
+// AfterAll
+// Benchmark Process 22920 has exited with code 0.
+
+Mean = 1.966 s, StdErr = 0.009 s (0.45%), N = 15, StdDev = 0.034 s
+Min = 1.923 s, Q1 = 1.940 s, Median = 1.966 s, Q3 = 1.987 s, Max = 2.051 s
+IQR = 0.047 s, LowerFence = 1.869 s, UpperFence = 2.058 s
+ConfidenceInterval = [1.929 s; 2.002 s] (CI 99.9%), Margin = 0.037 s (1.86% of Mean)
+Skewness = 0.79, Kurtosis = 3.03, MValue = 2
+
+// ** Remained 1 (50,0 %) benchmark(s) to run. Estimated finish 2024-06-19 12:47 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Höchstleistung)
+// **************************
+// Benchmark: JoinOrderTests.ExecuteJoinTree: .NET 8.0(Runtime=.NET 8.0) [JoinTreeMeasure=n, a, b, c, co]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 59b21dc1-f955-4ade-835e-828cf77ff031.dll --anonymousPipes 1900 1896 --benchmarkName "SchmidiDB.Tests.JoinOrderTests.ExecuteJoinTree(JoinTreeMeasure: n, a, b, c, co)" --job ".NET 8.0" --benchmarkId 1 in D:\FH\Master\Masterarbeit\The Real Shit\schmidiDB\SchmidiDB\SchmidiDB\bin\Release\net8.0\59b21dc1-f955-4ade-835e-828cf77ff031\bin\Release\net8.0
+// BeforeAnythingElse
+----------------------------Query Plan----------------------------
+Preselection:
+    nationalities n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] authors a ON (n.id = a.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] books b ON (a.id = b.author)  OUTER JOIN [SchmidiDB.Query.Join.SortMergeJoinOperator ] categories c ON (b.category = c.id)  OUTER JOIN [SchmidiDB.Query.Join.SortMergeJoinOperator ] continents co ON (n.continent = co.id)
+Estimated Number of Rows: 100000
+------------------------------------------------------------------
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.12
+// Runtime=.NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: .NET 8.0
+
+OverheadJitting  1: 1 op, 149500.00 ns, 149.5000 us/op
+WorkloadJitting  1: 1 op, 1905040200.00 ns, 1.9050 s/op
+
+OverheadJitting  2: 1 op, 600.00 ns, 600.0000 ns/op
+WorkloadJitting  2: 1 op, 1733808800.00 ns, 1.7338 s/op
+
+WorkloadWarmup   1: 1 op, 1695911100.00 ns, 1.6959 s/op
+WorkloadWarmup   2: 1 op, 1723241500.00 ns, 1.7232 s/op
+WorkloadWarmup   3: 1 op, 1720954100.00 ns, 1.7210 s/op
+WorkloadWarmup   4: 1 op, 1726491000.00 ns, 1.7265 s/op
+WorkloadWarmup   5: 1 op, 1780527700.00 ns, 1.7805 s/op
+WorkloadWarmup   6: 1 op, 1729147000.00 ns, 1.7291 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 1716311200.00 ns, 1.7163 s/op
+WorkloadActual   2: 1 op, 1754251700.00 ns, 1.7543 s/op
+WorkloadActual   3: 1 op, 1721484400.00 ns, 1.7215 s/op
+WorkloadActual   4: 1 op, 1679104600.00 ns, 1.6791 s/op
+WorkloadActual   5: 1 op, 1713421600.00 ns, 1.7134 s/op
+WorkloadActual   6: 1 op, 1730850200.00 ns, 1.7309 s/op
+WorkloadActual   7: 1 op, 1710175400.00 ns, 1.7102 s/op
+WorkloadActual   8: 1 op, 1732217600.00 ns, 1.7322 s/op
+WorkloadActual   9: 1 op, 1726228800.00 ns, 1.7262 s/op
+WorkloadActual  10: 1 op, 1688970300.00 ns, 1.6890 s/op
+WorkloadActual  11: 1 op, 1725304000.00 ns, 1.7253 s/op
+WorkloadActual  12: 1 op, 1725081500.00 ns, 1.7251 s/op
+WorkloadActual  13: 1 op, 1712788100.00 ns, 1.7128 s/op
+WorkloadActual  14: 1 op, 1706430200.00 ns, 1.7064 s/op
+WorkloadActual  15: 1 op, 1703294700.00 ns, 1.7033 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 1716311200.00 ns, 1.7163 s/op
+WorkloadResult   2: 1 op, 1721484400.00 ns, 1.7215 s/op
+WorkloadResult   3: 1 op, 1679104600.00 ns, 1.6791 s/op
+WorkloadResult   4: 1 op, 1713421600.00 ns, 1.7134 s/op
+WorkloadResult   5: 1 op, 1730850200.00 ns, 1.7309 s/op
+WorkloadResult   6: 1 op, 1710175400.00 ns, 1.7102 s/op
+WorkloadResult   7: 1 op, 1732217600.00 ns, 1.7322 s/op
+WorkloadResult   8: 1 op, 1726228800.00 ns, 1.7262 s/op
+WorkloadResult   9: 1 op, 1688970300.00 ns, 1.6890 s/op
+WorkloadResult  10: 1 op, 1725304000.00 ns, 1.7253 s/op
+WorkloadResult  11: 1 op, 1725081500.00 ns, 1.7251 s/op
+WorkloadResult  12: 1 op, 1712788100.00 ns, 1.7128 s/op
+WorkloadResult  13: 1 op, 1706430200.00 ns, 1.7064 s/op
+WorkloadResult  14: 1 op, 1703294700.00 ns, 1.7033 s/op
+
+// AfterAll
+// Benchmark Process 11204 has exited with code 0.
+
+Mean = 1.714 s, StdErr = 0.004 s (0.24%), N = 14, StdDev = 0.015 s
+Min = 1.679 s, Q1 = 1.707 s, Median = 1.715 s, Q3 = 1.725 s, Max = 1.732 s
+IQR = 0.018 s, LowerFence = 1.681 s, UpperFence = 1.752 s
+ConfidenceInterval = [1.696 s; 1.731 s] (CI 99.9%), Margin = 0.017 s (1.02% of Mean)
+Skewness = -0.79, Kurtosis = 2.61, MValue = 2
+
+// ** Remained 0 (0,0 %) benchmark(s) to run. Estimated finish 2024-06-19 12:47 (0h 0m from now) **
+Successfully reverted power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Höchstleistung)
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts\results\SchmidiDB.Tests.JoinOrderTests-report.csv
+  BenchmarkDotNet.Artifacts\results\SchmidiDB.Tests.JoinOrderTests-report-github.md
+  BenchmarkDotNet.Artifacts\results\SchmidiDB.Tests.JoinOrderTests-report.html
+  BenchmarkDotNet.Artifacts\results\SchmidiDB.Tests.JoinOrderTests-measurements.csv
+RPlotExporter couldn't find Rscript.exe in your PATH and no R_HOME environment variable is defined
+  BenchmarkDotNet.Artifacts\results\BuildPlots.R
+
+// * Detailed results *
+JoinOrderTests.ExecuteJoinTree: .NET 8.0(Runtime=.NET 8.0) [JoinTreeMeasure=b, a, n, c, co]
+Runtime = .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 1.966 s, StdErr = 0.009 s (0.45%), N = 15, StdDev = 0.034 s
+Min = 1.923 s, Q1 = 1.940 s, Median = 1.966 s, Q3 = 1.987 s, Max = 2.051 s
+IQR = 0.047 s, LowerFence = 1.869 s, UpperFence = 2.058 s
+ConfidenceInterval = [1.929 s; 2.002 s] (CI 99.9%), Margin = 0.037 s (1.86% of Mean)
+Skewness = 0.79, Kurtosis = 3.03, MValue = 2
+-------------------- Histogram --------------------
+[1.905 s ; 1.972 s) | @@@@@@@@@@
+[1.972 s ; 2.013 s) | @@@@
+[2.013 s ; 2.069 s) | @
+---------------------------------------------------
+
+JoinOrderTests.ExecuteJoinTree: .NET 8.0(Runtime=.NET 8.0) [JoinTreeMeasure=n, a, b, c, co]
+Runtime = .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 1.714 s, StdErr = 0.004 s (0.24%), N = 14, StdDev = 0.015 s
+Min = 1.679 s, Q1 = 1.707 s, Median = 1.715 s, Q3 = 1.725 s, Max = 1.732 s
+IQR = 0.018 s, LowerFence = 1.681 s, UpperFence = 1.752 s
+ConfidenceInterval = [1.696 s; 1.731 s] (CI 99.9%), Margin = 0.017 s (1.02% of Mean)
+Skewness = -0.79, Kurtosis = 2.61, MValue = 2
+-------------------- Histogram --------------------
+[1.671 s ; 1.735 s) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3737/23H2/2023Update/SunValley3)
+Intel Core i7-10700K CPU 3.80GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]   : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+
+Job=.NET 8.0  Runtime=.NET 8.0  
+
+| Method          | JoinTreeMeasure | Mean    | Error    | StdDev   |
+|---------------- |---------------- |--------:|---------:|---------:|
+| ExecuteJoinTree | b, a, n, c, co  | 1.966 s | 0.0366 s | 0.0342 s |
+| ExecuteJoinTree | n, a, b, c, co  | 1.714 s | 0.0174 s | 0.0155 s |
+
+// * Hints *
+Outliers
+  JoinOrderTests.ExecuteJoinTree: .NET 8.0 -> 1 outlier  was  removed (2.13 s)
+  JoinOrderTests.ExecuteJoinTree: .NET 8.0 -> 1 outlier  was  removed, 2 outliers were detected (1.68 s, 1.75 s)
+
+// * Legends *
+  JoinTreeMeasure : Value of the 'JoinTreeMeasure' parameter
+  Mean            : Arithmetic mean of all measurements
+  Error           : Half of 99.9% confidence interval
+  StdDev          : Standard deviation of all measurements
+  1 s             : 1 Second (1 sec)
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:01:41 (101.7 sec), executed benchmarks: 2
+
+Global total time: 00:01:45 (105.2 sec), executed benchmarks: 2
+// * Artifacts cleanup *
+Artifacts cleanup is finished

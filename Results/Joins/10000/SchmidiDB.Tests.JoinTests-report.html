@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>SchmidiDB.Tests.JoinTests-20240606-202714</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3593/23H2/2023Update/SunValley3)
+Intel Core i7-10700K CPU 3.80GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]   : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method             </th><th>JoinOperator  </th><th>Mean          </th><th>Error       </th><th>StdDev      </th>
+</tr>
+</thead><tbody><tr><td>AuthorsJoinBooks</td><td>Hash Join</td><td>56,660,316.374 ns</td><td>1,067,730.4596 ns</td><td>1,186,779.5768 ns</td>
+</tr><tr><td>BooksJoinAuthors</td><td>Hash Join</td><td>54,177,560.131 ns</td><td>1,070,701.7430 ns</td><td>1,728,983.7355 ns</td>
+</tr><tr><td>AuthorsJoinBooksOrdered</td><td>Hash Join</td><td>53,422,949.550 ns</td><td>1,045,130.7769 ns</td><td>1,774,711.3770 ns</td>
+</tr><tr><td>BooksJoinAuthorsOrdered</td><td>Hash Join</td><td>54,611,500.855 ns</td><td>1,068,023.8243 ns</td><td>1,870,557.5744 ns</td>
+</tr><tr><td>AuthorsJoinBooksUnordered</td><td>Hash Join</td><td>55,699,418.621 ns</td><td>1,087,222.8605 ns</td><td>1,593,637.1721 ns</td>
+</tr><tr><td>BooksJoinAuthorsUnordered</td><td>Hash Join</td><td>55,499,879.762 ns</td><td>1,094,705.4038 ns</td><td>1,569,993.7788 ns</td>
+</tr><tr><td>AuthorsJoinBooks</td><td>Nested-Loop Join</td><td>3,011,838,164.286 ns</td><td>11,439,873.8542 ns</td><td>10,141,150.1978 ns</td>
+</tr><tr><td>BooksJoinAuthors</td><td>Nested-Loop Join</td><td>2,978,447,453.333 ns</td><td>7,993,335.0078 ns</td><td>7,476,970.5257 ns</td>
+</tr><tr><td>AuthorsJoinBooksOrdered</td><td>Nested-Loop Join</td><td>4,017,049,338.462 ns</td><td>11,727,673.3564 ns</td><td>9,793,138.4016 ns</td>
+</tr><tr><td>BooksJoinAuthorsOrdered</td><td>Nested-Loop Join</td><td>3,059,027,366.667 ns</td><td>19,468,385.5943 ns</td><td>18,210,739.9639 ns</td>
+</tr><tr><td>AuthorsJoinBooksUnordered</td><td>Nested-Loop Join</td><td>3,059,741,166.667 ns</td><td>22,443,928.8234 ns</td><td>20,994,064.9466 ns</td>
+</tr><tr><td>BooksJoinAuthorsUnordered</td><td>Nested-Loop Join</td><td>3,667,398,313.333 ns</td><td>15,768,012.5261 ns</td><td>14,749,408.7001 ns</td>
+</tr><tr><td>AuthorsJoinBooks</td><td>Neste(...)ndex) [24]</td><td>50,966,336.429 ns</td><td>915,635.1148 ns</td><td>811,686.6798 ns</td>
+</tr><tr><td>BooksJoinAuthors</td><td>Neste(...)ndex) [24]</td><td>50,509,812.500 ns</td><td>679,954.7095 ns</td><td>530,863.9117 ns</td>
+</tr><tr><td>AuthorsJoinBooksOrdered</td><td>Neste(...)ndex) [24]</td><td>1.200 ns</td><td>0.0120 ns</td><td>0.0112 ns</td>
+</tr><tr><td>BooksJoinAuthorsOrdered</td><td>Neste(...)ndex) [24]</td><td>50,979,725.359 ns</td><td>1,019,539.3407 ns</td><td>1,133,215.2758 ns</td>
+</tr><tr><td>AuthorsJoinBooksUnordered</td><td>Neste(...)ndex) [24]</td><td>49,635,234.118 ns</td><td>928,814.5493 ns</td><td>953,824.1585 ns</td>
+</tr><tr><td>BooksJoinAuthorsUnordered</td><td>Neste(...)ndex) [24]</td><td>1.190 ns</td><td>0.0041 ns</td><td>0.0039 ns</td>
+</tr><tr><td>AuthorsJoinBooks</td><td>Sort-Merge Join</td><td>53,767,633.103 ns</td><td>1,056,560.5221 ns</td><td>1,548,692.7140 ns</td>
+</tr><tr><td>BooksJoinAuthors</td><td>Sort-Merge Join</td><td>53,948,711.667 ns</td><td>1,035,617.7452 ns</td><td>1,346,595.5941 ns</td>
+</tr><tr><td>AuthorsJoinBooksOrdered</td><td>Sort-Merge Join</td><td>49,977,840.000 ns</td><td>969,496.6765 ns</td><td>1,226,102.8757 ns</td>
+</tr><tr><td>BooksJoinAuthorsOrdered</td><td>Sort-Merge Join</td><td>49,662,582.162 ns</td><td>984,864.0342 ns</td><td>1,672,373.8743 ns</td>
+</tr><tr><td>AuthorsJoinBooksUnordered</td><td>Sort-Merge Join</td><td>54,494,161.818 ns</td><td>1,078,414.0811 ns</td><td>1,324,389.3393 ns</td>
+</tr><tr><td>BooksJoinAuthorsUnordered</td><td>Sort-Merge Join</td><td>55,454,762.286 ns</td><td>1,108,389.8238 ns</td><td>1,821,116.2661 ns</td>
+</tr></tbody></table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>SchmidiDB.Tests.JoinOrderTests-20240614-122328</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3593/23H2/2023Update/SunValley3)
+Intel Core i7-10700K CPU 3.80GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]   : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method   </th><th>JoinTreeMeasure</th><th>Mean</th><th>Error</th><th>StdDev</th>
+</tr>
+</thead><tbody><tr><td>ExecuteJoinTree</td><td>b, a, c, n, co</td><td>1,270.7 ms</td><td>8.27 ms</td><td>7.33 ms</td>
+</tr><tr><td>ExecuteJoinTree</td><td>b, a, n, c, co</td><td>1,295.6 ms</td><td>11.93 ms</td><td>10.58 ms</td>
+</tr><tr><td>ExecuteJoinTree</td><td>b, a, n, co, c</td><td>1,327.6 ms</td><td>11.36 ms</td><td>10.62 ms</td>
+</tr><tr><td>ExecuteJoinTree</td><td>b, c, a, n, co</td><td>1,191.4 ms</td><td>16.97 ms</td><td>15.05 ms</td>
+</tr><tr><td>ExecuteJoinTree</td><td>co, n, a, b, c</td><td>918.6 ms</td><td>12.40 ms</td><td>11.60 ms</td>
+</tr><tr><td>ExecuteJoinTree</td><td>n, a, b, c, co</td><td>1,151.4 ms</td><td>5.82 ms</td><td>5.16 ms</td>
+</tr><tr><td>ExecuteJoinTree</td><td>n, a, b, co, c</td><td>1,252.5 ms</td><td>24.73 ms</td><td>34.67 ms</td>
+</tr><tr><td>ExecuteJoinTree</td><td>n, a, co, b, c</td><td>1,208.4 ms</td><td>18.57 ms</td><td>17.37 ms</td>
+</tr></tbody></table>
+</body>
+</html>

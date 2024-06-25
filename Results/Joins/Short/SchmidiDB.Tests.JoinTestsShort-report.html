@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>SchmidiDB.Tests.JoinTestsShort-20240614-165056</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3593/23H2/2023Update/SunValley3)
+Intel Core i7-10700K CPU 3.80GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]   : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method               </th><th>JoinOperator  </th><th>Mean    </th><th>Error  </th><th>StdDev </th>
+</tr>
+</thead><tbody><tr><td>AuthorsJoinNationalities</td><td>Hash Join</td><td>270,074.264 &mu;s</td><td>3,407.4636 &mu;s</td><td>3,020.6277 &mu;s</td>
+</tr><tr><td>NationalitiesJoinAuthors</td><td>Hash Join</td><td>266,494.377 &mu;s</td><td>3,659.1195 &mu;s</td><td>3,422.7427 &mu;s</td>
+</tr><tr><td>NationalitiesJoinContinents</td><td>Hash Join</td><td>8.395 &mu;s</td><td>0.0400 &mu;s</td><td>0.0375 &mu;s</td>
+</tr><tr><td>ContinentsJoinNationalities</td><td>Hash Join</td><td>8.500 &mu;s</td><td>0.0347 &mu;s</td><td>0.0325 &mu;s</td>
+</tr><tr><td>AuthorsJoinNationalities</td><td>Nested-Loop Join</td><td>282,150.643 &mu;s</td><td>2,864.8665 &mu;s</td><td>2,679.7979 &mu;s</td>
+</tr><tr><td>NationalitiesJoinAuthors</td><td>Nested-Loop Join</td><td>288,961.003 &mu;s</td><td>5,578.2953 &mu;s</td><td>5,478.6319 &mu;s</td>
+</tr><tr><td>NationalitiesJoinContinents</td><td>Nested-Loop Join</td><td>9.591 &mu;s</td><td>0.0267 &mu;s</td><td>0.0236 &mu;s</td>
+</tr><tr><td>ContinentsJoinNationalities</td><td>Nested-Loop Join</td><td>9.609 &mu;s</td><td>0.0515 &mu;s</td><td>0.0482 &mu;s</td>
+</tr><tr><td>AuthorsJoinNationalities</td><td>Neste(...)ndex) [24]</td><td>272,749.470 &mu;s</td><td>5,144.7354 &mu;s</td><td>4,812.3887 &mu;s</td>
+</tr><tr><td>NationalitiesJoinAuthors</td><td>Neste(...)ndex) [24]</td><td>266,287.640 &mu;s</td><td>4,990.4101 &mu;s</td><td>4,668.0327 &mu;s</td>
+</tr><tr><td>NationalitiesJoinContinents</td><td>Neste(...)ndex) [24]</td><td>8.138 &mu;s</td><td>0.0419 &mu;s</td><td>0.0350 &mu;s</td>
+</tr><tr><td>ContinentsJoinNationalities</td><td>Neste(...)ndex) [24]</td><td>7.921 &mu;s</td><td>0.0446 &mu;s</td><td>0.0396 &mu;s</td>
+</tr><tr><td>AuthorsJoinNationalities</td><td>Sort-Merge Join</td><td>299,874.818 &mu;s</td><td>2,888.6548 &mu;s</td><td>2,560.7173 &mu;s</td>
+</tr><tr><td>NationalitiesJoinAuthors</td><td>Sort-Merge Join</td><td>297,935.117 &mu;s</td><td>4,079.2884 &mu;s</td><td>3,815.7689 &mu;s</td>
+</tr><tr><td>NationalitiesJoinContinents</td><td>Sort-Merge Join</td><td>8.892 &mu;s</td><td>0.0273 &mu;s</td><td>0.0255 &mu;s</td>
+</tr><tr><td>ContinentsJoinNationalities</td><td>Sort-Merge Join</td><td>8.936 &mu;s</td><td>0.0457 &mu;s</td><td>0.0427 &mu;s</td>
+</tr></tbody></table>
+</body>
+</html>

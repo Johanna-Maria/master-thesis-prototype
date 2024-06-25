@@ -1,0 +1,37 @@
+----------------------------Query Plan----------------------------
+Preselection:
+    continents co INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] nationalities n ON (co.id = n.continent)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] authors a ON (n.id = a.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] books b ON (a.id = b.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)
+Estimated Number of Rows: 875944
+------------------------------------------------------------------
+co, n, a, b, c
+ Nested-Loop Join Hash Join Nested-Loop Join (Index) Nested-Loop Join
+    continents co INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] nationalities n ON (co.id = n.continent)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] authors a ON (n.id = a.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] books b ON (a.id = b.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)
+875944 Rows, Estimated Costs: 3980019,6
+n, a, co, b, c
+ Hash Join Nested-Loop Join Nested-Loop Join (Index) Nested-Loop Join
+    nationalities n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] authors a ON (n.id = a.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] continents co ON (n.continent = co.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] books b ON (a.id = b.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)
+875944 Rows, Estimated Costs: 5100008,4
+n, a, b, c, co
+ Hash Join Nested-Loop Join (Index) Nested-Loop Join Nested-Loop Join
+    nationalities n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] authors a ON (n.id = a.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] books b ON (a.id = b.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] continents co ON (n.continent = co.id)
+875944 Rows, Estimated Costs: 5381518,8
+n, a, b, co, c
+ Hash Join Nested-Loop Join (Index) Nested-Loop Join Nested-Loop Join
+    nationalities n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] authors a ON (n.id = a.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] books b ON (a.id = b.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] continents co ON (n.continent = co.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)
+875944 Rows, Estimated Costs: 5580008,4
+b, c, a, n, co
+ Nested-Loop Join Nested-Loop Join (Index) Nested-Loop Join Nested-Loop Join
+    books b INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] authors a ON (b.author = a.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] nationalities n ON (a.nationality = n.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] continents co ON (n.continent = co.id)
+875944 Rows, Estimated Costs: 6330097,600000001
+b, a, c, n, co
+ Nested-Loop Join (Index) Nested-Loop Join Nested-Loop Join Nested-Loop Join
+    books b INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] authors a ON (b.author = a.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] nationalities n ON (a.nationality = n.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] continents co ON (n.continent = co.id)
+875944 Rows, Estimated Costs: 6603020,800000001
+b, a, n, c, co
+ Nested-Loop Join (Index) Nested-Loop Join Nested-Loop Join Nested-Loop Join
+    books b INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] authors a ON (b.author = a.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] nationalities n ON (a.nationality = n.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] continents co ON (n.continent = co.id)
+875944 Rows, Estimated Costs: 6801510,4
+b, a, n, co, c
+ Nested-Loop Join (Index) Nested-Loop Join Nested-Loop Join Nested-Loop Join
+    books b INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] authors a ON (b.author = a.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] nationalities n ON (a.nationality = n.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] continents co ON (n.continent = co.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] categories c ON (b.category = c.id)
+875944 Rows, Estimated Costs: 7000000

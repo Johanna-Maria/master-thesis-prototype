@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>SchmidiDB.Tests.AccessBenchmark-20240530-165945</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3593/23H2/2023Update/SunValley3)
+Intel Core i7-10700K CPU 3.80GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]   : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.0 (8.0.23.53103), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>AccessOperator</th><th>SysCatalog   </th><th>Mean   </th><th>Error</th><th>StdDev</th>
+</tr>
+</thead><tbody><tr><td>Execute</td><td>hash</td><td>10% 1,000 rows</td><td>2.608 &mu;s</td><td>0.0105 &mu;s</td><td>0.0088 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>10% 1,000,000 rows</td><td>3,936.377 &mu;s</td><td>34.5000 &mu;s</td><td>32.2713 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>10% 100,000 rows</td><td>359.893 &mu;s</td><td>6.8062 &mu;s</td><td>7.8381 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>100% 1,000 rows</td><td>22.803 &mu;s</td><td>0.0859 &mu;s</td><td>0.0804 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>100% 1,000,000 rows</td><td>34,133.509 &mu;s</td><td>370.1601 &mu;s</td><td>328.1373 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>100% 100,000 rows</td><td>4,596.419 &mu;s</td><td>67.7703 &mu;s</td><td>63.3924 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>25% 1,000 rows</td><td>5.822 &mu;s</td><td>0.0280 &mu;s</td><td>0.0248 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>25% 1,000,000 rows</td><td>8,194.258 &mu;s</td><td>29.6157 &mu;s</td><td>26.2535 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>25% 100,000 rows</td><td>958.334 &mu;s</td><td>18.8295 &mu;s</td><td>27.6001 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>50% 1,000 rows</td><td>11.452 &mu;s</td><td>0.0417 &mu;s</td><td>0.0326 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>50% 1,000,000 rows</td><td>17,468.769 &mu;s</td><td>160.8413 &mu;s</td><td>150.4511 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>50% 100,000 rows</td><td>2,120.016 &mu;s</td><td>41.1052 &mu;s</td><td>38.4498 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>75% 1,000 rows</td><td>18.579 &mu;s</td><td>0.0806 &mu;s</td><td>0.0715 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>75% 1,000,000 rows</td><td>30,129.032 &mu;s</td><td>368.4659 &mu;s</td><td>344.6632 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>75% 100,000 rows</td><td>4,034.014 &mu;s</td><td>79.5129 &mu;s</td><td>81.6539 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>90% 1,000 rows</td><td>22.116 &mu;s</td><td>0.1429 &mu;s</td><td>0.1336 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>90% 1,000,000 rows</td><td>34,358.803 &mu;s</td><td>265.0979 &mu;s</td><td>221.3688 &mu;s</td>
+</tr><tr><td>Execute</td><td>hash</td><td>90% 100,000 rows</td><td>4,177.741 &mu;s</td><td>38.7282 &mu;s</td><td>36.2264 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>10% 1,000 rows</td><td>18.398 &mu;s</td><td>0.0584 &mu;s</td><td>0.0487 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>10% 1,000,000 rows</td><td>26,142.265 &mu;s</td><td>134.7129 &mu;s</td><td>126.0105 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>10% 100,000 rows</td><td>2,626.843 &mu;s</td><td>33.0830 &mu;s</td><td>29.3272 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>100% 1,000 rows</td><td>24.125 &mu;s</td><td>0.3214 &mu;s</td><td>0.2849 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>100% 1,000,000 rows</td><td>35,610.080 &mu;s</td><td>356.6790 &mu;s</td><td>316.1866 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>100% 100,000 rows</td><td>4,499.773 &mu;s</td><td>84.6363 &mu;s</td><td>90.5598 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>25% 1,000 rows</td><td>19.620 &mu;s</td><td>0.1159 &mu;s</td><td>0.1084 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>25% 1,000,000 rows</td><td>27,193.015 &mu;s</td><td>452.4932 &mu;s</td><td>401.1234 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>25% 100,000 rows</td><td>2,862.708 &mu;s</td><td>55.9992 &mu;s</td><td>64.4887 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>50% 1,000 rows</td><td>21.206 &mu;s</td><td>0.3023 &mu;s</td><td>0.2827 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>50% 1,000,000 rows</td><td>33,132.527 &mu;s</td><td>178.9265 &mu;s</td><td>167.3680 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>50% 100,000 rows</td><td>3,567.521 &mu;s</td><td>61.4050 &mu;s</td><td>57.4383 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>75% 1,000 rows</td><td>22.644 &mu;s</td><td>0.2889 &mu;s</td><td>0.2702 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>75% 1,000,000 rows</td><td>40,093.035 &mu;s</td><td>326.6712 &mu;s</td><td>272.7853 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>75% 100,000 rows</td><td>4,393.747 &mu;s</td><td>85.2151 &mu;s</td><td>104.6518 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>90% 1,000 rows</td><td>23.359 &mu;s</td><td>0.0785 &mu;s</td><td>0.0735 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>90% 1,000,000 rows</td><td>39,535.139 &mu;s</td><td>338.3343 &mu;s</td><td>316.4781 &mu;s</td>
+</tr><tr><td>Execute</td><td>sequential</td><td>90% 100,000 rows</td><td>4,507.252 &mu;s</td><td>85.3331 &mu;s</td><td>83.8085 &mu;s</td>
+</tr></tbody></table>
+</body>
+</html>

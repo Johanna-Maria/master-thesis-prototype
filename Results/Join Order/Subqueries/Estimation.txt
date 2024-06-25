@@ -1,0 +1,165 @@
+----------------------------Query Plan----------------------------
+Preselection:
+    ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (n.nationalities.id = a.authors.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co ON (n.nationalities.continent = co.continents.id)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b ON (a.authors.id = b.books.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c ON (b.books.category = c.categories.id)
+Estimated Number of Rows: 240100000
+------------------------------------------------------------------
+n, a, co, b, c
+ HJ NLJ HJ NLJ
+    ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (n.nationalities.id = a.authors.nationality)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co ON (n.nationalities.continent = co.continents.id)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b ON (a.authors.id = b.books.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c ON (b.books.category = c.categories.id)
+240100000 Rows, Estimated Costs: 892002568,4
+co, n, a, b, c
+ NLJ HJ HJ NLJ
+    ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n ON (co.continents.id = n.nationalities.continent)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (n.nationalities.id = a.authors.nationality)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b ON (a.authors.id = b.books.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c ON (b.books.category = c.categories.id)
+245000000 Rows, Estimated Costs: 910111017,2
+n, a, b, c, co
+ HJ HJ NLJ NLJ
+    ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (n.nationalities.id = a.authors.nationality)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b ON (a.authors.id = b.books.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c ON (b.books.category = c.categories.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co ON (n.nationalities.continent = co.continents.id)
+240100000 Rows, Estimated Costs: 1822941808,4
+n, a, b, co, c
+ HJ HJ NLJ NLJ
+    ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (n.nationalities.id = a.authors.nationality)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b ON (a.authors.id = b.books.author)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co ON (n.nationalities.continent = co.continents.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c ON (b.books.category = c.categories.id)
+240100000 Rows, Estimated Costs: 1822941808,4
+c, b, a, n, co
+ HJ HJ NLJ NLJ
+    ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b ON (c.categories.id = b.books.category)  INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (b.books.author = a.authors.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n ON (a.authors.nationality = n.nationalities.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co ON (n.nationalities.continent = co.continents.id)
+240100000 Rows, Estimated Costs: 1822988008,4
+b, a, c, n, co
+ HJ NLJ NLJ NLJ
+    ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (b.books.author = a.authors.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c ON (b.books.category = c.categories.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n ON (a.authors.nationality = n.nationalities.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co ON (n.nationalities.continent = co.continents.id)
+240100000 Rows, Estimated Costs: 3152934000
+b, a, n, c, co
+ HJ NLJ NLJ NLJ
+    ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (b.books.author = a.authors.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n ON (a.authors.nationality = n.nationalities.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c ON (b.books.category = c.categories.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co ON (n.nationalities.continent = co.continents.id)
+240100000 Rows, Estimated Costs: 3152934000
+b, a, n, co, c
+ HJ NLJ NLJ NLJ
+    ( SELECT books.id, books.title, books.year, books.category, books.author
+FROM books books
+ ) b INNER JOIN [SchmidiDB.Query.Join.HashJoinOperator ] ( SELECT authors.id, authors.firstName, authors.lastName, authors.gender, authors.nationality
+FROM authors authors
+ ) a ON (b.books.author = a.authors.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT nationalities.id, nationalities.name, nationalities.continent
+FROM nationalities nationalities
+ ) n ON (a.authors.nationality = n.nationalities.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT continents.id, continents.name
+FROM continents continents
+ ) co ON (n.nationalities.continent = co.continents.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] ( SELECT categories.id, categories.name
+FROM categories categories
+ ) c ON (b.books.category = c.categories.id)
+240100000 Rows, Estimated Costs: 3152934000
+co, n, a, b, c
+[910111017.2]
+[' NLJ HJ HJ NLJ']
+[245000000]
+n, a, co, b, c
+[892002568.4]
+[' HJ NLJ HJ NLJ']
+[240100000]
+n, a, b, c, co
+[1822941808.4]
+[' HJ HJ NLJ NLJ']
+[240100000]
+n, a, b, co, c
+[1822941808.4]
+[' HJ HJ NLJ NLJ']
+[240100000]
+b, c, a, n, co
+[]
+[]
+[]
+b, a, n, c, co
+[3152934000]
+[' HJ NLJ NLJ NLJ']
+[240100000]
+b, a, n, co, c
+[3152934000]
+[' HJ NLJ NLJ NLJ']
+[240100000]
+b, a, c, n, co
+[3152934000]
+[' HJ NLJ NLJ NLJ']
+[240100000]
+c, b, a, n, co
+[1822988008.4]
+[' HJ HJ NLJ NLJ']
+[240100000]
+
+Process finished with exit code 0.
