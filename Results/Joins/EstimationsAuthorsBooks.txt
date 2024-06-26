@@ -1,0 +1,24 @@
+AuthorsJoinBooks: Nested-Loop Join Estimated: 1400014000
+BooksJoinAuthors: Nested-Loop Join Estimated: 1400020000
+AuthorsJoinBooksOrdered: Nested-Loop Join Estimated: 1400014000
+BooksJoinAuthorsOrdered: Nested-Loop Join Estimated: 1400020000
+AuthorsJoinBooksUnordered: Nested-Loop Join Estimated: 1400014000
+BooksJoinAuthorsUnordered: Nested-Loop Join Estimated: 1400020000
+AuthorsJoinBooks: Nested-Loop Join (Index) Estimated: 154000
+BooksJoinAuthors: Nested-Loop Join (Index) Estimated: 220000
+AuthorsJoinBooksOrdered: Nested-Loop Join (Index) Estimated: 154000
+BooksJoinAuthorsOrdered: Nested-Loop Join (Index) Estimated: 220000
+AuthorsJoinBooksUnordered: Nested-Loop Join (Index) Estimated: 154000
+BooksJoinAuthorsUnordered: Nested-Loop Join (Index) Estimated: 220000
+AuthorsJoinBooks: Sort-Merge Join Estimated: 234000
+BooksJoinAuthors: Sort-Merge Join Estimated: 234000
+AuthorsJoinBooksOrdered: Sort-Merge Join Estimated: 134000
+BooksJoinAuthorsOrdered: Sort-Merge Join Estimated: 134000
+AuthorsJoinBooksUnordered: Sort-Merge Join Estimated: 304000
+BooksJoinAuthorsUnordered: Sort-Merge Join Estimated: 304000
+AuthorsJoinBooks: Hash Join Estimated: 204000
+BooksJoinAuthors: Hash Join Estimated: 234000
+AuthorsJoinBooksOrdered: Hash Join Estimated: 204000
+BooksJoinAuthorsOrdered: Hash Join Estimated: 234000
+AuthorsJoinBooksUnordered: Hash Join Estimated: 204000
+BooksJoinAuthorsUnordered: Hash Join Estimated: 234000

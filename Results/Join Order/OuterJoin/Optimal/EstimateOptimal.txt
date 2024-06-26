@@ -1,0 +1,14 @@
+Preselection:
+    books b OUTER JOIN [SchmidiDB.Query.Join.SortMergeJoinOperator ] categories c ON (b.category = c.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] authors a ON (b.author = a.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] nationalities n ON (a.nationality = n.id)  OUTER JOIN [SchmidiDB.Query.Join.SortMergeJoinOperator ] continents co ON (n.continent = co.id)
+Estimated Number of Rows: 100000
+------------------------------------------------------------------
+b, c, a, n, co
+ SMJ NLIJ NLJ SMJ
+    books b OUTER JOIN [SchmidiDB.Query.Join.SortMergeJoinOperator ] categories c ON (b.category = c.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinWithIndexOperator ] authors a ON (b.author = a.id)  INNER JOIN [SchmidiDB.Query.Join.NestedLoopJoinOperator ] nationalities n ON (a.nationality = n.id)  OUTER JOIN [SchmidiDB.Query.Join.SortMergeJoinOperator ] continents co ON (n.continent = co.id)
+100000 Rows, Estimated Costs: 820002,8
+b, c, a, n, co
+[820002.8]
+[' SMJ NLIJ NLJ SMJ']
+[100000]
+
+Process finished with exit code 0.
